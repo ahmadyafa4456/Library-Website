@@ -11,13 +11,8 @@ class BukuController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->has('search')) {
-            $buku = Buku::where('judul', 'like', '%' . $request->search . '%')->paginate(6);
-        } else {
-            $buku = Buku::paginate(6);
-        }
-        $status = Buku::all();
-        return view('dashboard.buku.index', compact(['buku', 'status']));
+        $buku = Buku::all();
+        return view('dashboard.buku.index', compact(['buku']));
     }
 
     public function tambah()
