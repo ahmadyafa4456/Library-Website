@@ -28,12 +28,12 @@
                     <div class="alert alert-danger mt-3">{{ $message }}</div>
                 @enderror
                 <div class="fom-group">
-                <label for="buku" class="text-primary font-weight-bold mt-3">Buku yang akan dipinjam</label>
+                <label for="buku" class="text-primary font-weight-bold mt-3">Buku yang akan dikembalikan</label>
                 <select name="buku_id" id="" class="form-control">
                     @forelse ($buku as $s)
                     <option value="{{ $s->id }}">{{ $s->judul}} ( {{ $s->kode_buku }} ) - {{ $s->status }}</option>
                 @empty
-                    tidak ada buku yang tersedia
+                    <option value="">Tidak ada buku yang dipinjam</option>
                 @endforelse
                 </select>
             </div>
