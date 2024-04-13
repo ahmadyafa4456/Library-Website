@@ -2,11 +2,6 @@
 
 @section('container')
 @if (Auth::user()->role === 'admin')
-<div class="container">
-    <a href="/pinjam/create" class="btn btn-info mb-3 ">Pinjam Buku</a>
-    <a href="/pinjam/balik" class="btn btn-info mb-3 ">Kembalikan Buku</a>
-    <a href="/cetaklaporan" class="btn btn-info mb-3 mx-2">Cetak</a>
-</div>
 <div class="col-lg-auto">
     <div class="card mb-4">
         <div class="table-responsive p-3">
@@ -23,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($pinjamanUser as $item )
+                    @forelse ($peminjam as $item )
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $item->user->nama }}</td>

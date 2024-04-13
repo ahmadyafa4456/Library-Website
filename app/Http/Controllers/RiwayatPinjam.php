@@ -16,7 +16,7 @@ class RiwayatPinjam extends Controller
     public function index()
     {
         $user = Auth::id();
-        $peminjam = RiwayatPeminjam::with(['users', 'bukus'])->orderBy('updated_at', 'desc');
+        $peminjam = RiwayatPeminjam::all();
         $pinjamanUser = RiwayatPeminjam::where('users_id', $user)->get();
         return view('dashboard.peminjam.index', compact(['peminjam', 'pinjamanUser']));
     }

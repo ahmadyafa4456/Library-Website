@@ -9,10 +9,10 @@
     <div class="row d-flex flex-wrap justify-content-center">
 
         @forelse ($buku as $item)
-            <div class="col-auto my-2">
-                <div class="card mx-2 my-2" style="width:300px">
+            <div class="col-3 my-2" >
+                <div class="card mx-2 my-2" style="width:250px">
                         <img class="card-img-top" style="height:200px;" src="{{ asset('storage/' . $item->gambar) }}">
-                    <div class="card-body d-flex flex-column justify-content-between">
+                    <div class="card-body d-flex flex-column justify-content-between" style="height:250px">
                         <div class="detai-buku">
                             <h5 class="card-title text-primary"><a
                                     href="/buku/{{ $item->id }}"style="text-decoration: none; font-size:1rem;font-weight:bold;">
