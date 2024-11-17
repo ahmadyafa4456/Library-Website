@@ -54,8 +54,6 @@ class BukuController extends Controller
     public function update(Request $request, $id)
     {
         $buku = Buku::find($id);
-        $kategori = Category::find($id);
-
         $update = $request->validate([
             'judul' => 'required',
             'pengarang' => 'required',
