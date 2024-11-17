@@ -11,7 +11,7 @@ class BukuController extends Controller
 {
     public function index(Request $request)
     {
-        $buku = Buku::all();
+        $buku = Buku::with('category_buku')->get();
         return view('dashboard.buku.index', compact(['buku']));
     }
 
@@ -35,14 +35,13 @@ class BukuController extends Controller
         ]);
 
         if ($request->file('gambar')) {
-            $validate['gambar'] = $request->file('gambar')->store('buku-image');
+            $validate['gambar'] = $request->file('gambar')->store('buku-image', 'public');
             $buku = Buku::create($validate);
             $buku->category_buku()->sync($request->kategori_buku);
         }
 
         $request->session()->flash('bukutambah');
         return redirect('/buku');
-
     }
 
     public function edit($id)
@@ -66,7 +65,7 @@ class BukuController extends Controller
         ]);
 
         if ($request->file('gambar')) {
-            $update['gambar'] = $request->file('gambar')->store('buku-image');
+            $update['gambar'] = $request->file('gambar')->store('buku-image', 'public');
             Storage::delete($buku->gambar);
         }
         $buku->category_buku()->sync($request->kategori_buku);
